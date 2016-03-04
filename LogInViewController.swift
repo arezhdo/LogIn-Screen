@@ -81,6 +81,7 @@ class LogInViewController: UIViewController {
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Portrait
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
