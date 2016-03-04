@@ -11,27 +11,30 @@ import Parse
 
 class ResetPasswordViewController: UIViewController {
     
-    //
     // Create Outlet for textfield
-    //
     @IBOutlet weak var emailField: UITextField!
     
     //
-    // Create Action for Reset Password Button
+    // MARK: - Actions
     //
     @IBAction func resetPassword(sender: AnyObject) {
         let email = self.emailField.text
+        // Create variable to convert a faulty e-mail input
         let finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         
-        // Send a request to reset a password
+        // Send a request to reset a password through PARSE
         PFUser.requestPasswordResetForEmailInBackground(finalEmail)
         
-        let alert = UIAlertController (title: "Password Reset", message: "An email containing information on how to reset your password has been sent to " + finalEmail + ".", preferredStyle: UIAlertControllerStyle.Alert)
+        // Show the user that an e-mail verification was sent
+        let alert = UIAlertController (title: "Password Reset", message: "An email containing information on how to reset your password has been sent to \(finalEmail).", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    // Should not outorotate
+    //
+    // MARK: - Functions
+    //
+    // Screen should not outorotate
     override func shouldAutorotate() -> Bool {
         return false
     }
@@ -43,13 +46,10 @@ class ResetPasswordViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
