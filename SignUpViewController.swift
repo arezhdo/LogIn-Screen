@@ -88,6 +88,16 @@ class SignUpViewController: UIViewController {
     //
     // MARK: - Functions
     //
+    // Screen should not outorotate for this particular View Controller
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    // The only supported interface orientation is portrait!
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
